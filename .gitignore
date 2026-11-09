@@ -1,0 +1,12 @@
+# Private SSH keys
+**/id_rsa
+**/id_ed25519
+**/*.pem
+**/*.key
+**/alu_server
+**/school
+
+# Temporary files
+*.swp
+*.swo
+*~
