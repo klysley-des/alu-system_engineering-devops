@@ -1,16 +1,14 @@
 #!/usr/bin/env bash
 #Bash script that installs HAProxy & makes configurations
 
-apt-get -y install software-properties-common
-add-apt-repository ppa:vbernat/haproxy-1.8
-apt-get update
-apt-get -y install haproxy
-echo "ENABLED=1" >> /etc/default/haproxy
+sudo apt-get update -y
+sudo apt-get -y install haproxy
+echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 printf %s "listen 7325-webs
     bind *:80
     mode http
     balance roundrobin
     server 7325-web-01 35.176.105.214:80 check
     server 7325-web-02 35.178.109.0:80 check
-" >> /etc/haproxy/haproxy.cfg
+" | sudo tee -a /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
